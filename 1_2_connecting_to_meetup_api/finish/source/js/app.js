@@ -14,7 +14,7 @@ var MU = (function () {
 
     api.getData = function(params){
         $.ajax({
-            url: params.baseUrl,
+            url: params.baseUrl + params.method,
             type: 'jsonp',
             data: params.options,
             success: function(data){
