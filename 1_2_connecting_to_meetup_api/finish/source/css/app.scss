@@ -1,0 +1,22 @@
+body{
+  color: #222;
+}
+
+#mu-header{
+  background-color:#eee;
+  margin-top: 20px;
+  div{
+    display: inline-block;
+  }
+  #mu-title{
+    font-size: 2.1em;
+  }
+  #mu-key-status{
+    color:#777;
+    margin-top: .5em;
+  }
+}
+
+#mu-key-input{
+  width: 100%;
+}

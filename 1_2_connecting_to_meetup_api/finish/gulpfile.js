@@ -6,7 +6,6 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     path = require('path'),
     plumber = require('gulp-plumber'),
-    react = require('gulp-react'),
     watch = require('gulp-watch');
 
 gulp.task('default',
@@ -17,6 +16,7 @@ gulp.task('default',
  */
 var html_source = [
     'source/*.html',
+    'source/favicon.ico'
 ];
 
 gulp.task('html_task', function () {

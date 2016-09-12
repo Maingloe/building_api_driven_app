@@ -1,0 +1,99 @@
+/*
+	STEP 1:  Copy this snippet into you app.js file
+*/
+
+var MU = (function(){
+    var api = {};
+
+    api.checkKey = function(){
+        return !!localStorage.getItem('meetup_key');
+    };
+    api.getKey = function(){
+        return JSON.parse(localStorage.getItem('meetup_key'))['key'];
+    };
+
+    api.setKey = function(key){
+        localStorage.setItem('meetup_key', JSON.stringify({key: key}));
+    };
+    return api;
+})();
+
+
+document.addEventListener("DOMContentLoaded", function(){
+    MU.checkKey();
+
+    var mu_open_modal_button = document.getElementById('mu-open-key-modal');
+    mu_open_modal_button.addEventListener('click', function(e){
+        var $modal = $('#mu-key-modal').modal({keyboard: true, show:true});
+        document.getElementById('mu-key-input').value = MU.checkKey ? MU.getKey() : '';
+    });
+    mu_open_modal_button.innerHTML =  MU.checkKey() ? 'Reset Meetup API Key' : 'Add Meetup API Key';
+
+    document.getElementById('mu-save-key-button').addEventListener('click', function(e){
+        MU.setKey(document.getElementById('mu-key-input').value);
+        $('#mu-key-modal').modal('hide');
+    })
+});
+
+/*
+	STEP 2:  Copy this snippet into you app.scss file
+*/
+
+body{
+  color: #222;
+}
+
+#mu-header{
+  background-color:#eee;
+  margin-top: 20px;
+  div{
+    display: inline-block;
+  }
+  #mu-title{
+    font-size: 2.1em;
+  }
+  #mu-key-status{
+    color:#777;
+    margin-top: .5em;
+  }
+}
+
+#mu-key-input{
+  width: 100%;
+}
+
+/*
+	STEP 3:  Copy this markup into the body of the HTML file
+*/
+
+<div class="container">
+    <div class="row">
+        <div id="mu-header" class="col-lg-12">
+            <div id="mu-title">Meetup Team Builder</div>
+            <div id="mu-key-status" class="pull-right"><button id="mu-open-key-modal"></button></div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modal -->
+    <div id="mu-key-modal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Enter your Meetup.com API key</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" name="mu-key-input" id="mu-key-input">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="mu-save-key-button" class="btn btn-primary">Save key</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
