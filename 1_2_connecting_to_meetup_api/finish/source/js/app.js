@@ -24,21 +24,20 @@ var MU = (function () {
                 console.log(err);
             }
         });
-    }
+    };
 
     return api;
-
 })();
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    MU.checkKey();
 
     var mu_open_modal_button = document.getElementById('mu-open-key-modal');
     mu_open_modal_button.addEventListener('click', function (e) {
         var $modal = $('#mu-key-modal').modal({keyboard: true, show: true});
         document.getElementById('mu-key-input').value = MU.checkKey ? MU.getKey() : '';
     });
+
     mu_open_modal_button.innerHTML = MU.checkKey() ? 'Reset Meetup API Key' : 'Add Meetup API Key';
 
     document.getElementById('mu-save-key-button').addEventListener('click', function (e) {
