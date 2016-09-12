@@ -3,7 +3,9 @@
 */
 
 var MU = (function(){
+
     var api = {};
+    api.baseUrl = 'https://api.meetup.com'
 
     api.checkKey = function(){
         return !!localStorage.getItem('meetup_key');
@@ -15,6 +17,23 @@ var MU = (function(){
     api.setKey = function(key){
         localStorage.setItem('meetup_key', JSON.stringify({key: key}));
     };
+
+    api.getData = function(params){
+        params.options['key'] = api.getKey();
+        $.ajax({
+            url: params.baseUrl + params.apiMethod,
+            method: 'GET',
+            dataType: 'jsonp',
+            data: params.options,
+            success: function(data){
+                console.log(data.results);
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+    };
+
     return api;
 })();
 
@@ -75,8 +94,6 @@ body{
     </div>
 
 
-
-
     <!-- Modal -->
     <div id="mu-key-modal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog" role="document">
@@ -95,5 +112,25 @@ body{
         </div>
     </div>
 </div>
+
+
+/*
+    WORKSHOP CHALLENGE:  Below is some code that will retrieve the meetup.com categories using the ajax method in the module.
+    Integrate them into your code.
+*/
+
+
+    var params = {
+        baseUrl: 'https://api.meetup.com',
+        apiMethod: '/2/categories',
+        options: {
+            order: 'shortname',
+            desc: false
+        }
+    };
+
+    document.getElementById('mu-get-button').addEventListener('click', function(e){
+        MU.getData(params);
+    });
 
 

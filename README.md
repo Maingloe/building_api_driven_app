@@ -1,1 +1,2 @@
-# building_api_driven_app
+# Riverside JS Workshop
+## Building an API-driven Application

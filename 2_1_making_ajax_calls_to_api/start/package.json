@@ -1,0 +1,32 @@
+{
+  "name": "apiapp",
+  "version": "1.0.0",
+  "description": "a Riverside JS workshop development exercise",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RiversideJSW/building_api_driven_app.git"
+  },
+  "author": "Sean Olson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RiversideJSW/building_api_driven_app/issues"
+  },
+  "homepage": "https://github.com/RiversideJSW/building_api_driven_app#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.14.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^5.0.0",
+    "gulp-copy": "0.0.2",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.9",
+    "path": "^0.12.7"
+  }
+}
